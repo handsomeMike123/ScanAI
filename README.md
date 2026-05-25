@@ -84,7 +84,6 @@ flutter run
 | CoreML | `ios/.../Model/EmotiEff_enet_b2_7_fp32.mlpackage` | ~15 MB | iOS 原生 |
 | TFLite | `flutter/assets/models/EmotiEff_enet_b2_7_fp32.tflite` | ~29 MB | Flutter |
 
-> 模型转换文档详见 [MODEL_REFERENCES.md](MODEL_REFERENCES.md)
 
 ## License
 
