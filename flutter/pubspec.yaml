@@ -1,0 +1,49 @@
+name: ai_scan
+description: "TFLite 大模型调用 Demo - 支持 iOS/Android"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 状态管理与路由
+  get: ^4.6.6
+
+  # TFLite 模型加载与推理
+  tflite_flutter: ^0.12.1
+
+  # 人脸检测
+  google_mlkit_face_detection: ^0.12.0
+
+  # 图片选择（相册/拍照）
+  image_picker: ^1.0.7
+
+  # 相机实时预览
+  camera: ^0.11.0+2
+
+  # 权限管理
+  permission_handler: ^11.3.1
+
+  # 路径工具
+  path_provider: ^2.1.2
+
+  # 图片处理
+  image: ^4.1.7
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/models/

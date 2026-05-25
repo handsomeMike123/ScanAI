@@ -1,0 +1,90 @@
+# ================================
+# OS
+# ================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ================================
+# IDE
+# ================================
+.idea/
+.vscode/
+
+# ================================
+# Python（本地模型转换用，不提交）
+# ================================
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+coreml_env/
+tflite_convert_env/
+.venv/
+venv/
+
+# ================================
+# Flutter / Dart
+# ================================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+*.iml
+flutter_01.log
+
+# ================================
+# iOS / macOS
+# ================================
+xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+Pods/
+
+# ================================
+# Android
+# ================================
+*.apk
+*.ap_
+*.aab
+.gradle/
+local.properties
+.android/
+
+# ================================
+# 模型转换相关（不提交，在原始路径维护）
+# ================================
+Scripts/
+tflite_temp/
+tflite_builtin/
+best_checkpoint.tar
+
+# ================================
+# Codebuddy
+# ================================
+.codebuddy/
+
+# ================================
+# 一次性脚本
+# ================================
+setup_repo.sh

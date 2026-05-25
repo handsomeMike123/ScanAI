@@ -1,0 +1,65 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcscmbluepoint
+DerivedData/
+build/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+coreml_env/
+get-pip.py
+
+# 模型大文件（GitHub 不适合上传）
+Models/*.tar
+Models/*.bin
+Models/*.pt
+Models/*.pth
+Models/*.onnx
+Models/emotiefflib/
+
+# 学习引导文档（本地专用，不提交）
+LEARNING_GUIDE.md
+MODEL_REFERENCES.md
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# CocoaPods (if used)
+Pods/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# Test images (optional, 如果图片有版权)
+# TestImages/

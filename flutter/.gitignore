@@ -1,0 +1,57 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# 不需要展示的模块（开发过程中保留，但不在开源仓库中展示）
+# 这些模块是早期开发版本，最终版本统一使用 mood_tabs 模块
+/lib/app/modules/home/
+/lib/app/modules/image_scan/
+/lib/app/modules/camera_scan/
+/lib/app/modules/realtime_mood/
+/lib/app/modules/image_classification/
+/lib/app/modules/mood_detection/
+
+# 不再使用的工具类
+/lib/app/core/utils/image_converter.dart
