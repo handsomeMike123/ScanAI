@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
-/// 人脸框覆盖层（对应 iOS FaceOverlayView）
+/// 人脸框覆盖层绘制器
 class FaceOverlayPainter extends CustomPainter {
   final List<Rect> faceRects;
   final Size imageSize;

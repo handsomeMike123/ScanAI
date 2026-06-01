@@ -1,7 +1,7 @@
 import 'package:ai_scan/app/data/models/mood_result.dart';
 import 'package:flutter/material.dart';
 
-/// 心情结果卡片（对应 iOS MoodResultView）
+/// 心情结果卡片
 /// 左侧显示人脸缩略图，右侧显示心情分析结果
 class MoodResultCard extends StatelessWidget {
   final MoodResult result;
@@ -36,7 +36,7 @@ class MoodResultCard extends StatelessWidget {
     );
   }
 
-  /// 左侧人脸缩略图（对应 iOS faceImageView + faceHintLabel）
+  /// 左侧人脸缩略图
   Widget _buildFaceThumbnail() {
     final bool hasImage = result.faceImageBytes != null;
     return Column(
@@ -65,7 +65,7 @@ class MoodResultCard extends StatelessWidget {
     );
   }
 
-  /// 右侧心情结果（对应 iOS faceIndexLabel / moodLabel / classLabel 等）
+  /// 右侧心情结果
   Widget _buildResultInfo(BuildContext context, Color moodColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

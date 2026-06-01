@@ -46,4 +46,34 @@ flutter {
 dependencies {
     // TFLite Select TF Ops：模型使用了 FlexDepthwiseConv2dNative 等 TF 原生算子
     implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1")
+
+    // ============================================================
+    // CameraX（Android 相机框架）
+    //
+    // 核心组件：
+    // - ProcessCameraProvider: 相机生命周期管理
+    // - ImageAnalysis: 逐帧数据分析
+    // - CameraSelector: 前/后置摄像头选择
+    // - camera-lifecycle: 绑定 LifecycleOwner
+    // - camera-view: 预览用例（本项目仅用 ImageAnalysis）
+    //
+    // 版本选择：1.3.x 稳定版，兼容 Android 5.0+ (minSdk 21)
+    // ============================================================
+    val cameraxVersion = "1.3.4"
+    implementation("androidx.camera:camera-core:${cameraxVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraxVersion}")
+    implementation("androidx.camera:camera-view:${cameraxVersion}")
+
+    // Guava ListenableFuture（CameraX 的 ProcessCameraProvider.getInstance() 返回值）
+    // CameraX 传递依赖可能被 Gradle 排除，需显式声明
+    implementation("com.google.guava:guava:33.0.0-android")
+
+    // ============================================================
+    // ML Kit 人脸检测
+    //
+    // 端侧实时人脸检测，返回人脸边界框，
+    // 通过 Google Play Services 按需下载模型，无需打包。
+    // ============================================================
+    implementation("com.google.mlkit:face-detection:16.1.6")
 }

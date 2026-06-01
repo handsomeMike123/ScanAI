@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:ai_scan/app/core/constants/app_constants.dart';
 
-/// 分类结果模型（参照 iOS MoodResult）
+/// 分类结果模型
 class ClassificationResult {
   /// 人脸索引
   final int faceIndex;

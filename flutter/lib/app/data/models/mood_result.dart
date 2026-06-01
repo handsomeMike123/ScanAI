@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:ai_scan/app/data/models/mood_enum.dart';
 
-/// 单个人脸的心情检测结果（对应 iOS MoodResult）
+/// 单个人脸的心情检测结果
 class MoodResult {
   /// 人脸索引
   final int faceIndex;

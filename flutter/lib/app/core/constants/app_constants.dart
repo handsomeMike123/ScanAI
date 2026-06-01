@@ -8,14 +8,14 @@ class AppConstants {
   /// 模型输入尺寸
   static const int modelInputSize = 224;
 
-  /// 模型文件名（EmotiEff enet_b2_7，与 iOS CoreML 版本同一模型）
+  /// 模型文件名（EmotiEff enet_b2_7，AffectNet 7分类情绪识别模型）
   static const String modelFileName = 'EmotiEff_enet_b2_7_fp32.tflite';
 
   /// 模型输入通道数 (RGB)
   static const int modelChannels = 3;
 
-  /// AffectNet 7类标签（顺序与 iOS MoodDetector 一致）
-  /// iOS: ["Anger", "Disgust", "Fear", "Happiness", "Neutral", "Sadness", "Surprise"]
+  /// AffectNet 7类标签
+  /// 标签顺序必须与模型输出节点一致，否则推理结果会错位
   static const List<String> affectNetLabels = [
     'Anger',
     'Disgust',

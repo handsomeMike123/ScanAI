@@ -22,9 +22,6 @@ dependencies:
   # 图片选择（相册/拍照）
   image_picker: ^1.0.7
 
-  # 相机实时预览
-  camera: ^0.11.0+2
-
   # 权限管理
   permission_handler: ^11.3.1
 

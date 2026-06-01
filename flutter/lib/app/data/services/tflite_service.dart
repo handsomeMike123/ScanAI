@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 import 'package:ai_scan/app/core/constants/app_constants.dart';
 import 'package:ai_scan/app/data/models/classification_result.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as img;
 
@@ -18,19 +20,49 @@ class TfliteService {
   bool get isModelLoaded => _interpreter != null;
 
   /// 加载模型
+  ///
+  /// 加载策略：先尝试 fromBuffer（效率最高），失败后降级为 fromFile（写临时文件再加载）。
+  /// fromBuffer 在 Android 上稳定可用；iOS 上偶发缓冲区生命周期问题时 fromFile 可兜底。
   Future<bool> loadModel() async {
+    // 尝试方式 1：fromBuffer（直接从内存加载，最快）
     try {
       final String assetPath = 'assets/models/${AppConstants.modelFileName}';
       final ByteData byteData = await rootBundle.load(assetPath);
       final Uint8List buffer = byteData.buffer.asUint8List();
+
+      debugPrint('模型资源: $assetPath (${buffer.length} bytes)');
+
       _interpreter = Interpreter.fromBuffer(buffer);
 
-      print('TFLite 模型加载成功: ${AppConstants.modelFileName}');
-      print('输入 shape: ${_interpreter!.getInputTensor(0).shape}');
-      print('输出 shape: ${_interpreter!.getOutputTensor(0).shape}');
+      debugPrint('TFLite 模型加载成功 (fromBuffer): ${AppConstants.modelFileName}');
+      debugPrint('输入 shape: ${_interpreter!.getInputTensor(0).shape}');
+      debugPrint('输出 shape: ${_interpreter!.getOutputTensor(0).shape}');
       return true;
     } catch (e, stackTrace) {
-      print('模型加载失败: $e\n$stackTrace');
+      debugPrint('fromBuffer 加载失败: $e');
+      debugPrint('尝试 fromFile 降级方案...');
+    }
+
+    // 尝试方式 2：fromFile（写临时文件再加载，兼容性更好）
+    try {
+      final String assetPath = 'assets/models/${AppConstants.modelFileName}';
+      final ByteData byteData = await rootBundle.load(assetPath);
+      final Uint8List buffer = byteData.buffer.asUint8List();
+
+      final Directory tempDir = await getTemporaryDirectory();
+      final File modelFile = File('${tempDir.path}/${AppConstants.modelFileName}');
+      await modelFile.writeAsBytes(buffer, flush: true);
+
+      debugPrint('模型临时文件: ${modelFile.path} (${buffer.length} bytes)');
+
+      _interpreter = Interpreter.fromFile(modelFile);
+
+      debugPrint('TFLite 模型加载成功 (fromFile): ${AppConstants.modelFileName}');
+      debugPrint('输入 shape: ${_interpreter!.getInputTensor(0).shape}');
+      debugPrint('输出 shape: ${_interpreter!.getOutputTensor(0).shape}');
+      return true;
+    } catch (e) {
+      debugPrint('fromFile 加载也失败: $e');
       return false;
     }
   }
@@ -110,7 +142,7 @@ class TfliteService {
       }
     }
 
-    print('推理结果: ${AppConstants.affectNetLabelsCN[topIdx]} (${(topProb * 100).toStringAsFixed(1)}%)');
+    debugPrint('推理结果: ${AppConstants.affectNetLabelsCN[topIdx]} (${(topProb * 100).toStringAsFixed(1)}%)');
 
     // ⑧ 保存送入模型的 224×224 调试图片（便于验证预处理是否正确）
     final Uint8List debugPng = Uint8List.fromList(img.encodePng(resizedImage));

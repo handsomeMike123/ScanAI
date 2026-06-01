@@ -1,6 +1,5 @@
 import 'package:ai_scan/app/core/theme/app_theme.dart';
-import 'package:ai_scan/app/modules/mood_tabs/bindings/mood_tabs_binding.dart';
-import 'package:ai_scan/app/modules/mood_tabs/views/mood_tabs_view.dart';
+import 'package:ai_scan/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +18,8 @@ class AiScanApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const MoodDetectionPage(),
-      initialBinding: MoodTabsBinding(),
+      initialRoute: AppRoutes.mainTab,
+      getPages: AppPages.pages,
       debugShowCheckedModeBanner: false,
     );
   }

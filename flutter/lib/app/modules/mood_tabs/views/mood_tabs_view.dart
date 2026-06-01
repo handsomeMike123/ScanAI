@@ -17,7 +17,7 @@ class MoodDetectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MoodDetectionController controller = Get.put(MoodDetectionController());
+    final MoodDetectionController controller = Get.find<MoodDetectionController>();
 
     return Scaffold(
       appBar: AppBar(title: const Text('心情检测')),
